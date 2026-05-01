@@ -13,6 +13,7 @@ final class DSTextField: UIView {
     let placeholder: String
     let leftIcon: DSIconsTextField
     let keyBoardType: UIKeyboardType
+    let onTextChanged: ((String) -> Void)
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -63,12 +64,14 @@ final class DSTextField: UIView {
         title: String,
         placeholder: String,
         leftIcon: DSIconsTextField,
-        keyBoardType: UIKeyboardType = .default
+        keyBoardType: UIKeyboardType = .default,
+        onTextChanged: @escaping ((String) -> Void)
     ) {
         self.title = title
         self.placeholder = placeholder
         self.keyBoardType = keyBoardType
         self.leftIcon = leftIcon
+        self.onTextChanged = onTextChanged
         
         super.init(frame: .zero)
         configView()

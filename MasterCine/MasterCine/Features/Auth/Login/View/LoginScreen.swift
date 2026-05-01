@@ -9,12 +9,14 @@ import UIKit
 
 final class LoginScreen: UIView {
     weak var delegate: LoginScreenDelegateProtocol?
+    private var loginModel = LoginModel()
     
     lazy var emailTextField: DSTextField = {
         DSTextField(
             title: "Email",
             placeholder: "Digite seu email...",
-            leftIcon: .envelope
+            leftIcon: .envelope,
+            onTextChanged: loginModel.setEmail
         )
     }()
     
