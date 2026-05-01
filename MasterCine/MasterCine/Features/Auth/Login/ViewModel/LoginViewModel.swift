@@ -31,6 +31,7 @@ final class LoginViewModel {
             if let error {
                 delegate?.loginDidFailure(message: error.localizedDescription)
             } else {
+                UserDefaultManager.shared.save(userInfo.email, forKey: UserDefaultKey.email)
                 delegate?.loginDidSucceed()
             }
         }
