@@ -5,6 +5,6 @@
 //  Created by Gabriel Merenfeld on 01/05/26.
 //
 
-struct UserDefaultKey {
+enum UserDefaultKey {
     static let email = "userEmail"
 }
