@@ -13,13 +13,14 @@ final class DSTextField: UIView {
     let placeholder: String
     let leftIcon: DSIconsTextField
     let keyBoardType: UIKeyboardType
+    let isPassword: Bool
     let onTextChanged: ((String) -> Void)
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         
         label.text = title
-        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.font = .systemFont(ofSize: 16, weight: .semibold)
         
         return label
     }()
@@ -32,6 +33,7 @@ final class DSTextField: UIView {
         textField.keyboardType = keyBoardType
         textField.leftView = container
         textField.leftViewMode = .always
+        textField.isSecureTextEntry = isPassword
         
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 8
@@ -65,12 +67,14 @@ final class DSTextField: UIView {
         placeholder: String,
         leftIcon: DSIconsTextField,
         keyBoardType: UIKeyboardType = .default,
+        isPassword: Bool = false,
         onTextChanged: @escaping ((String) -> Void)
     ) {
         self.title = title
         self.placeholder = placeholder
         self.keyBoardType = keyBoardType
         self.leftIcon = leftIcon
+        self.isPassword = isPassword
         self.onTextChanged = onTextChanged
         
         super.init(frame: .zero)
@@ -139,5 +143,6 @@ extension DSTextField {
         textField.layer.borderColor = UIColor.gray.cgColor
         iconImage.image = UIImage(systemName: leftIcon.outlinedIcon)
         iconImage.tintColor = .gray
+        onTextChanged(textField.text ?? "")
     }
 }

@@ -16,7 +16,24 @@ final class LoginScreen: UIView {
             title: "Email",
             placeholder: "Digite seu email...",
             leftIcon: .envelope,
-            onTextChanged: loginModel.setEmail
+            onTextChanged: setEmail
+        )
+    }()
+    
+    lazy var passwordTextField: DSTextField = {
+        DSTextField(
+            title: "Senha",
+            placeholder: "Digite sua senha...",
+            leftIcon: .lock,
+            isPassword: true,
+            onTextChanged: setPassword
+        )
+    }()
+    
+    lazy var loginPrimaryButton: DSPrimaryButton = {
+        DSPrimaryButton(
+            title: "Login",
+            onTapped: {}
         )
     }()
     
@@ -28,8 +45,17 @@ final class LoginScreen: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func setEmail(_ email: String) {
+        loginModel.email = email
+    }
+    
+    private func setPassword(_ password: String) {
+        loginModel.password = password
+    }
 }
 
+//MARK: - CONFIG VIEW
 extension LoginScreen {
     private func configView() {
         backgroundColor = .white
@@ -40,6 +66,8 @@ extension LoginScreen {
     
     private func addElements() {
         addSubview(emailTextField)
+        addSubview(passwordTextField)
+        addSubview(loginPrimaryButton)
     }
     
     private func disableTranslatesAutoresizingMaskInAllElements() {
@@ -53,6 +81,14 @@ extension LoginScreen {
             emailTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
             emailTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 8),
+            passwordTextField.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
+            passwordTextField.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),
+            
+            loginPrimaryButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24),
+            loginPrimaryButton.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
+            loginPrimaryButton.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),
         ])
     }
 }

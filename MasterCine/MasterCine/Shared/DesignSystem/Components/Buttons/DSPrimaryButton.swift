@@ -9,14 +9,14 @@ import UIKit
 
 final class DSPrimaryButton: UIButton {
     var title: String
-    var action: (() -> Void)
+    var onTapped: (() -> Void)
     
     init(
         title: String,
-        action: @escaping (() -> Void)
+        onTapped: @escaping (() -> Void)
     ) {
         self.title = title
-        self.action = action
+        self.onTapped = onTapped
         super.init(frame: .zero)
         configButton()
     }
@@ -57,6 +57,6 @@ extension DSPrimaryButton {
     }
     
     @objc private func tappedButtonAction() {
-        action()
+        onTapped()
     }
 }

@@ -6,14 +6,6 @@
 //
 
 struct LoginModel {
-    let email: String = ""
-    let password: String = "
-    
-    func setEmail(_ email: String) {
-        self.email = email
-    }
-    
-    func setPassword(_ password: String) {
-        self.password = password
-    }
+    var email: String = ""
+    var password: String = ""
 }
