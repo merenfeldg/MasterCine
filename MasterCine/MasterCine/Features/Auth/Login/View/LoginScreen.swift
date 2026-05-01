@@ -8,5 +8,5 @@
 import UIKit
 
 final class LoginScreen: UIView {
-    
+    weak var delegate: LoginScreenDelegateProtocol?
 }

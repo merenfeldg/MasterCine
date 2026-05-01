@@ -8,14 +8,44 @@
 import UIKit
 
 final class LoginViewController: UIViewController {
-    private var screen: LoginScreen?
+    private let screen: LoginScreen = LoginScreen()
+    private let viewModel: LoginViewModel = LoginViewModel()
     
     override func loadView() {
-        screen = LoginScreen()
         view = screen
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configProtocols()
+    }
+    
+    func configProtocols() {
+        screen.delegate = self
+        viewModel.delegate = self
+    }
+}
+
+extension LoginViewController: LoginScreenDelegateProtocol {
+    func tappedLoginButton() {
+        
+    }
+    
+    func tappedCreateAccountButton() {
+        <#code#>
+    }
+}
+
+extension LoginViewController: LoginViewModelDelegateProtocol {
+    func loginDidFailure(message: String) {
+        <#code#>
+    }
+    
+    func loginDidSucceed() {
+        <#code#>
+    }
+    
+    func showLoading(_ start: Bool) {
+        <#code#>
     }
 }
