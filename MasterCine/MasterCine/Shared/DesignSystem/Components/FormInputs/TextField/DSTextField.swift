@@ -14,12 +14,13 @@ final class DSTextField: UIView {
     let leftIcon: DSIconsTextField
     let keyBoardType: UIKeyboardType
     
-    lazy var container: UIView = {
-        let container = UIView(
-            frame: CGRect(x: 0, y: 0, width: 40, height: 40)
-        )
+    lazy var titleLabel: UILabel = {
+        let label = UILabel()
         
-        return container
+        label.text = title
+        label.font = .systemFont(ofSize: 16, weight: .bold)
+        
+        return label
     }()
     
     lazy var textField: UITextField = {
@@ -36,6 +37,14 @@ final class DSTextField: UIView {
         textField.layer.borderColor = UIColor.gray.cgColor
         
         return textField
+    }()
+    
+    lazy var container: UIView = {
+        let container = UIView(
+            frame: CGRect(x: 0, y: 0, width: 40, height: 40)
+        )
+        
+        return container
     }()
     
     lazy var iconImage: UIImageView = {
@@ -80,6 +89,7 @@ extension DSTextField {
     }
     
     private func addElements() {
+        addSubview(titleLabel)
         addSubview(textField)
         container.addSubview(iconImage)
     }
@@ -92,7 +102,10 @@ extension DSTextField {
     
     private func configConstraints() {
         NSLayoutConstraint.activate([
-            textField.topAnchor.constraint(equalTo: topAnchor),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            
+            textField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
             textField.bottomAnchor.constraint(equalTo: bottomAnchor),
             textField.leadingAnchor.constraint(equalTo: leadingAnchor),
             textField.trailingAnchor.constraint(equalTo: trailingAnchor),
