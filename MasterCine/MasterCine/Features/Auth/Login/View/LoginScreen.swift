@@ -11,7 +11,7 @@ final class LoginScreen: UIView {
     weak var delegate: LoginScreenDelegateProtocol?
     
     lazy var emailTextField: DSTextField = {
-        return DSTextField(
+        DSTextField(
             title: "Email",
             placeholder: "Digite seu email...",
             leftIcon: .envelope
