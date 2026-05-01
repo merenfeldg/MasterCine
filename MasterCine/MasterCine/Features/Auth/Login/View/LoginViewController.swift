@@ -32,20 +32,20 @@ extension LoginViewController: LoginScreenDelegateProtocol {
     }
     
     func tappedCreateAccountButton() {
-        <#code#>
+        
     }
 }
 
 extension LoginViewController: LoginViewModelDelegateProtocol {
     func loginDidFailure(message: String) {
-        <#code#>
+        
     }
     
     func loginDidSucceed() {
-        <#code#>
+        
     }
     
     func showLoading(_ start: Bool) {
-        <#code#>
+        
     }
 }
