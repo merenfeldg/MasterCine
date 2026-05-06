@@ -73,6 +73,7 @@ final class APIClient {
                             let decodedData = try JSONDecoder().decode(T.self, from: data)
                             completion(.success(decodedData))
                         } catch {
+                            NetworkLogger.logDecodingError(error: error, type: T.self)
                             completion(.failure(.decodingError(error)))
                         }
                     
@@ -97,6 +98,14 @@ final class APIClient {
         }
         
         let task = session.dataTask(with: requestCompleted) { data, response, error in
+            
+            NetworkLogger.log(
+                request: requestCompleted,
+                response: response,
+                data: data,
+                error: error
+            )
+            
             if let error {
                 completion(.failure(.networkFailure(error)))
                 return

@@ -30,8 +30,7 @@ struct NetworkLogger {
         print("Failed Type: \(String(describing: type))")
         print("Reason: \(error.localizedDescription)")
         print("================ 🚨  END DECODING ERROR 🚨 ==================")
-      }
-
+    }
 }
 
 extension NetworkLogger {
