@@ -24,6 +24,14 @@ struct NetworkLogger {
         
         print("=================== ⬛ END OF REQUEST ⬛ ====================")
     }
+    
+    static func logDecodingError<T: Decodable>(error: Error, type: T.Type) {
+        print("================ 🚨 START DECODING ERROR 🚨 =================")
+        print("Failed Type: \(String(describing: type))")
+        print("Reason: \(error.localizedDescription)")
+        print("================ 🚨  END DECODING ERROR 🚨 ==================")
+      }
+
 }
 
 extension NetworkLogger {
