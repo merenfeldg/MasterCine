@@ -32,7 +32,7 @@ final class DSPrimaryButton: UIButton {
     }
     
     private func customizeButtonApperance() {
-        backgroundColor = .black
+        backgroundColor = DSColor.red
         layer.cornerRadius = 8
         clipsToBounds = true
         
