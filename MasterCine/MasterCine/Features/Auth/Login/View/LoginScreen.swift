@@ -16,7 +16,7 @@ final class LoginScreen: UIBaseView {
             title: "Email",
             placeholder: "Digite seu email...",
             leftIcon: .envelope,
-            onTextChanged: setEmail
+            onTextChanged: setEmailInModel
         )
     }()
     
@@ -26,7 +26,7 @@ final class LoginScreen: UIBaseView {
             placeholder: "Digite sua senha...",
             leftIcon: .lock,
             isPassword: true,
-            onTextChanged: setPassword
+            onTextChanged: setPasswordInModel
         )
     }()
     
@@ -45,12 +45,15 @@ final class LoginScreen: UIBaseView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private func setEmail(_ email: String) {
+}
+
+//MARK: - MODEL UPDATES
+extension LoginScreen {
+    private func setEmailInModel(_ email: String) {
         loginModel.email = email
     }
     
-    private func setPassword(_ password: String) {
+    private func setPasswordInModel(_ password: String) {
         loginModel.password = password
     }
 }
