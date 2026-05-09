@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class DSTextField: UIView {
+final class DSTextField: UIBaseView {
     let title: String
     let placeholder: String
     let leftIcon: DSIconsTextField
@@ -21,6 +21,7 @@ final class DSTextField: UIView {
         
         label.text = title
         label.font = .systemFont(ofSize: 16, weight: .semibold)
+        label.textColor = DSColor.white
         
         return label
     }()
@@ -35,9 +36,16 @@ final class DSTextField: UIView {
         textField.leftViewMode = .always
         textField.isSecureTextEntry = isPassword
         
+        textField.backgroundColor = DSColor.greyNormal
+        textField.textColor = DSColor.white
+        textField.attributedPlaceholder = NSAttributedString(
+            string: placeholder,
+            attributes: [.foregroundColor: DSColor.greyLight]
+        )
+        
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 8
-        textField.layer.borderColor = UIColor.gray.cgColor
+        textField.layer.borderColor = DSColor.greyNormal.cgColor
         
         return textField
     }()
@@ -91,7 +99,7 @@ extension DSTextField {
     private func configView() {
         addElements()
         setupActions()
-        disableTranslatesAutoresizingMaskInAllElements()
+        super.disableTranslatesAutoresizingMaskInAllElements()
         configConstraints()
     }
     
@@ -99,12 +107,6 @@ extension DSTextField {
         addSubview(titleLabel)
         addSubview(textField)
         container.addSubview(iconImage)
-    }
-    
-    private func disableTranslatesAutoresizingMaskInAllElements() {
-        subviews.forEach { element in
-            element.translatesAutoresizingMaskIntoConstraints = false
-        }
     }
     
     private func configConstraints() {
@@ -134,15 +136,15 @@ extension DSTextField {
     }
     
     @objc private func didBeginEditing() {
-        textField.layer.borderColor = UIColor.black.cgColor
+        textField.layer.borderColor = DSColor.white.cgColor
         iconImage.image = UIImage(systemName: leftIcon.fillIcon)
-        iconImage.tintColor = .black
+        iconImage.tintColor = DSColor.white
     }
     
     @objc private func didEndEditing() {
-        textField.layer.borderColor = UIColor.gray.cgColor
+        textField.layer.borderColor = DSColor.greyNormal.cgColor
         iconImage.image = UIImage(systemName: leftIcon.outlinedIcon)
-        iconImage.tintColor = .gray
+        iconImage.tintColor = DSColor.greyLight
         onTextChanged(textField.text ?? "")
     }
 }

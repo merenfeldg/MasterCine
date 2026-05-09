@@ -61,7 +61,7 @@ extension LoginScreen {
 //MARK: - CONFIG VIEW
 extension LoginScreen {
     private func configView() {
-        backgroundColor = .white
+        backgroundColor = DSColor.background
         addElements()
         super.disableTranslatesAutoresizingMaskInAllElements()
         configConstraints()
