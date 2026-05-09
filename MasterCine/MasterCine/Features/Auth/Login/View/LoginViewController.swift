@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class LoginViewController: UIViewController {
+final class LoginViewController: UIBaseViewController {
     private let screen: LoginScreen = LoginScreen()
     private let viewModel: LoginViewModel = LoginViewModel()
     
