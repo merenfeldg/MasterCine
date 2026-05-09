@@ -8,7 +8,7 @@
 import UIKit
 
 final class RegisterScreen: UIBaseView {
-    weak var delegate: LoginScreenDelegateProtocol?
+    weak var delegate: RegisterScreenDelegateProtocol?
     private var registerModel = RegisterModel()
     
     lazy var nameTextField: DSTextField = {
