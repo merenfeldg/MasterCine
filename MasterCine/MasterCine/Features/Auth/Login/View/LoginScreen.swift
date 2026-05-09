@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class LoginScreen: UIView {
+final class LoginScreen: UIBaseView {
     weak var delegate: LoginScreenDelegateProtocol?
     private var loginModel = LoginModel()
     
@@ -60,7 +60,7 @@ extension LoginScreen {
     private func configView() {
         backgroundColor = .white
         addElements()
-        disableTranslatesAutoresizingMaskInAllElements()
+        super.disableTranslatesAutoresizingMaskInAllElements()
         configConstraints()
     }
     
@@ -68,12 +68,6 @@ extension LoginScreen {
         addSubview(emailTextField)
         addSubview(passwordTextField)
         addSubview(loginPrimaryButton)
-    }
-    
-    private func disableTranslatesAutoresizingMaskInAllElements() {
-        subviews.forEach { element in
-            element.translatesAutoresizingMaskIntoConstraints = false
-        }
     }
     
     private func configConstraints() {
