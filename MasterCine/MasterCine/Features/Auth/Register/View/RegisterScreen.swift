@@ -51,7 +51,7 @@ final class RegisterScreen: UIBaseView {
     
     lazy var registerPrimaryButton: DSPrimaryButton = {
         DSPrimaryButton(
-            title: "Login",
+            title: "Registrar",
             onTapped: {}
         )
     }()
@@ -104,15 +104,23 @@ extension RegisterScreen {
     
     private func configConstraints() {
         NSLayoutConstraint.activate([
-            emailTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
-            emailTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            nameTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+            nameTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            nameTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             
-            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 8),
-            passwordTextField.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
-            passwordTextField.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),
+            emailTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 16),
+            emailTextField.leadingAnchor.constraint(equalTo: nameTextField.leadingAnchor),
+            emailTextField.trailingAnchor.constraint(equalTo: nameTextField.trailingAnchor),
             
-            registerPrimaryButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24),
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 16),
+            passwordTextField.leadingAnchor.constraint(equalTo: nameTextField.leadingAnchor),
+            passwordTextField.trailingAnchor.constraint(equalTo: nameTextField.trailingAnchor),
+            
+            confirmPasswordTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 16),
+            confirmPasswordTextField.leadingAnchor.constraint(equalTo: nameTextField.leadingAnchor),
+            confirmPasswordTextField.trailingAnchor.constraint(equalTo: nameTextField.trailingAnchor),
+            
+            registerPrimaryButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16),
             registerPrimaryButton.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
             registerPrimaryButton.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),
         ])
