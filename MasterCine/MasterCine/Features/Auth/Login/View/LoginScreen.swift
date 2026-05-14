@@ -9,7 +9,7 @@ import UIKit
 
 final class LoginScreen: UIBaseView {
     weak var delegate: LoginScreenDelegateProtocol?
-    var loginModel = LoginModel()
+    private(set) var loginModel = LoginModel()
     
     lazy var emailTextField: DSTextField = {
         DSTextField(
