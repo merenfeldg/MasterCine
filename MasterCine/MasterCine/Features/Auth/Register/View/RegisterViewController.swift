@@ -28,11 +28,18 @@ final class RegisterViewController: UIBaseViewController {
 
 extension RegisterViewController: RegisterScreenDelegateProtocol {
     func tappedCreateAccountButton() {
-        <#code#>
+        viewModel.registerUser(screen.registerModel)
     }
     
     func tappedHaveAccountButton() {
-        
+        goToLoginScreen()
+    }
+    
+    private func goToLoginScreen() {
+        navigationController?.pushViewController(
+            LoginViewController(),
+            animated: true
+        )
     }
 }
 
