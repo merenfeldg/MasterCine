@@ -83,7 +83,7 @@ extension LoginScreen {
             passwordTextField.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
             passwordTextField.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),
             
-            loginPrimaryButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24),
+            loginPrimaryButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -24),
             loginPrimaryButton.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
             loginPrimaryButton.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),
         ])
