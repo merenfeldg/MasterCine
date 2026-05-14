@@ -45,11 +45,13 @@ extension LoginViewController: LoginScreenDelegateProtocol {
 
 extension LoginViewController: LoginViewModelDelegateProtocol {
     func loginDidFailure(message: String) {
-        
+        showAlertController(title: "ATENÇÃO", message: message)
     }
     
     func loginDidSucceed() {
-        
+        let tabBar = MainTabBarController()
+        tabBar.modalPresentationStyle = .fullScreen
+        present(tabBar, animated: true)
     }
     
     func showLoading(_ start: Bool) {
