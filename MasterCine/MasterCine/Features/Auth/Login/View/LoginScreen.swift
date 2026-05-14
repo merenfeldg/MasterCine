@@ -37,6 +37,13 @@ final class LoginScreen: UIBaseView {
         )
     }()
     
+    lazy var createAccountSecondaryButton: DSSecondaryButton = {
+        DSSecondaryButton(
+            title: "Criar uma conta",
+            onTapped: {}
+        )
+    }()
+    
     init() {
         super.init(frame: .zero)
         configView()
@@ -70,7 +77,9 @@ extension LoginScreen {
     private func addElements() {
         addSubview(emailTextField)
         addSubview(passwordTextField)
+        
         addSubview(loginPrimaryButton)
+        addSubview(createAccountSecondaryButton)
     }
     
     private func configConstraints() {
@@ -83,9 +92,13 @@ extension LoginScreen {
             passwordTextField.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
             passwordTextField.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),
             
-            loginPrimaryButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -24),
+            loginPrimaryButton.bottomAnchor.constraint(equalTo: createAccountSecondaryButton.topAnchor, constant: -16),
             loginPrimaryButton.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
             loginPrimaryButton.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),
+            
+            createAccountSecondaryButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16),
+            createAccountSecondaryButton.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
+            createAccountSecondaryButton.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),
         ])
     }
 }
