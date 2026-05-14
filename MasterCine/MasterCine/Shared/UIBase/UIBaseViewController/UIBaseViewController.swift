@@ -13,6 +13,22 @@ class UIBaseViewController: UIViewController {
         setupDismissKeyboardOnTap()
     }
     
+    func showAlertController(title: String, message: String) {
+        let alertController = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        let okButton = UIAlertAction(
+            title: "OK",
+            style: .default,
+            handler: nil
+        )
+        
+        alertController.addAction(okButton)
+        present(alertController, animated: true)
+    }
+    
     private func setupDismissKeyboardOnTap() {
         let tapGesture = UITapGestureRecognizer(
             target: self,
