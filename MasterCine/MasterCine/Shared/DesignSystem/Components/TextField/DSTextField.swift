@@ -34,6 +34,7 @@ final class DSTextField: UIBaseView {
         textField.keyboardType = keyBoardType
         textField.leftView = container
         textField.leftViewMode = .always
+        textField.autocapitalizationType = .none
         textField.isSecureTextEntry = isPassword
         
         textField.backgroundColor = DSColor.greyNormal
