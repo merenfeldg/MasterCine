@@ -27,15 +27,13 @@ final class RegisterViewController: UIBaseViewController {
 }
 
 extension RegisterViewController: RegisterScreenDelegateProtocol {
-    func tappedRegisterButton() {
-        
-    }
-    
     func tappedCreateAccountButton() {
-        
+        <#code#>
     }
     
-    
+    func tappedHaveAccountButton() {
+        
+    }
 }
 
 extension RegisterViewController: RegisterViewModelDelegateProtocol {

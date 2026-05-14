@@ -6,6 +6,6 @@
 //
 
 protocol RegisterScreenDelegateProtocol: AnyObject {
-    func tappedRegisterButton()
     func tappedCreateAccountButton()
+    func tappedHaveAccountButton()
 }
