@@ -26,6 +26,15 @@ final class HomeScreen: UIBaseView {
         
         return tableView
     }()
+    
+    init() {
+        super.init(frame: .zero)
+        configView()
+    }
+    
+    @MainActor required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 //MARK: - CONFIG PROTOCOLS
