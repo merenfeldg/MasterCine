@@ -52,7 +52,14 @@ final class RegisterScreen: UIBaseView {
     lazy var registerPrimaryButton: DSPrimaryButton = {
         DSPrimaryButton(
             title: "Registrar",
-            onTapped: {}
+            onTapped: registerPrimaryButtonAction
+        )
+    }()
+    
+    lazy var alreadyHaveAccountSecondaryButton: DSSecondaryButton = {
+        DSSecondaryButton(
+            title: "Já tenho uma conta",
+            onTapped: alreadyHaveAccountSecondaryButtonAction
         )
     }()
     
@@ -85,6 +92,17 @@ extension RegisterScreen {
     }
 }
 
+//MARK: - ACTIONS
+extension RegisterScreen {
+    private func registerPrimaryButtonAction() {
+        delegate?.tappedCreateAccountButton()
+    }
+    
+    private func alreadyHaveAccountSecondaryButtonAction() {
+        delegate?.tappedCreateAccountButton()
+    }
+}
+
 //MARK: - CONFIG VIEW
 extension RegisterScreen {
     private func configView() {
@@ -99,7 +117,9 @@ extension RegisterScreen {
         addSubview(emailTextField)
         addSubview(passwordTextField)
         addSubview(confirmPasswordTextField)
+        
         addSubview(registerPrimaryButton)
+        addSubview(alreadyHaveAccountSecondaryButton)
     }
     
     private func configConstraints() {
@@ -120,9 +140,13 @@ extension RegisterScreen {
             confirmPasswordTextField.leadingAnchor.constraint(equalTo: nameTextField.leadingAnchor),
             confirmPasswordTextField.trailingAnchor.constraint(equalTo: nameTextField.trailingAnchor),
             
-            registerPrimaryButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16),
+            registerPrimaryButton.bottomAnchor.constraint(equalTo: alreadyHaveAccountSecondaryButton.topAnchor, constant: -16),
             registerPrimaryButton.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
             registerPrimaryButton.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),
+            
+            alreadyHaveAccountSecondaryButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16),
+            alreadyHaveAccountSecondaryButton.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
+            alreadyHaveAccountSecondaryButton.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),
         ])
     }
 }
