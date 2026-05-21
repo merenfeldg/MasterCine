@@ -44,17 +44,22 @@ extension RegisterViewController: RegisterScreenDelegateProtocol {
 }
 
 extension RegisterViewController: RegisterViewModelDelegateProtocol {
+    func registerDidSucceed() {
+        goToHomeScreen()
+    }
+    
     func registerDidFailure(message: String) {
         showAlertController(title: "ATENÇÃO", message: message)
     }
     
-    func registerDidSucceed() {
-        let tabBar = MainTabBarController()
-        tabBar.modalPresentationStyle = .fullScreen
-        present(tabBar, animated: true)
-    }
-    
     func showLoading(_ start: Bool) {
         
+    }
+    
+    private func goToHomeScreen() {
+        navigationController?.pushViewController(
+            HomeViewController(),
+            animated: true
+        )
     }
 }
