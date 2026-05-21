@@ -33,14 +33,14 @@ final class LoginScreen: UIBaseView {
     lazy var loginPrimaryButton: DSPrimaryButton = {
         DSPrimaryButton(
             title: "Login",
-            onTapped: {}
+            onTapped: loginPrimaryButtonAction
         )
     }()
     
     lazy var createAccountSecondaryButton: DSSecondaryButton = {
         DSSecondaryButton(
             title: "Criar uma conta",
-            onTapped: {}
+            onTapped: createAccountSecondaryButtonAction
         )
     }()
     
@@ -62,6 +62,17 @@ extension LoginScreen {
     
     private func setPasswordInModel(_ password: String) {
         loginModel.password = password
+    }
+}
+
+//MARK: - ACTIONS
+extension LoginScreen {
+    private func loginPrimaryButtonAction() {
+        delegate?.tappedLoginButton()
+    }
+    
+    private func createAccountSecondaryButtonAction() {
+        delegate?.tappedCreateAccountButton()
     }
 }
 
