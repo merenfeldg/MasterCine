@@ -16,10 +16,11 @@ final class HomeViewController: UIBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        configProtocols()
     }
     
     private func configProtocols() {
+        screen.configSearchBarProtocol(delegate: self)
         screen.configTableViewProtocols(delegate: self, dataSource: self)
     }
 }
@@ -32,4 +33,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
     }
+}
+
+extension HomeViewController: UISearchBarDelegate {
+    
 }

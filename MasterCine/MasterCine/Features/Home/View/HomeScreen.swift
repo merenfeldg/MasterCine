@@ -26,10 +26,17 @@ final class HomeScreen: UIBaseView {
         
         return tableView
     }()
-    
+}
+
+//MARK: - CONFIG PROTOCOLS
+extension HomeScreen {
     func configTableViewProtocols(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
         moviesTableView.delegate = delegate
         moviesTableView.dataSource = dataSource
+    }
+    
+    func configSearchBarProtocol(delegate: UISearchBarDelegate) {
+        searchBar.delegate = delegate
     }
 }
 
